@@ -1,47 +1,48 @@
 # Suricata Tools
 
-Handige beheer- en analyse scripts voor Suricata IDS.
+Handy management and analysis scripts for Suricata IDS.
 
-## Installatie
+## Installation
 
 ```bash
 git clone <repo-url> suricata-tools
 cd suricata-tools
-./scripts/bootstrap.sh   # installeert jq + make (Debian/Ubuntu)
+./scripts/bootstrap.sh   # installs jq + make (Debian/Ubuntu)
 ```
 
-## Gebruik
+## Usage
 
 ```bash
-make status      # serviced status + processen
-make test        # configuratie-test (suricata -T)
-make update      # regels updaten + herstart
-make alerts      # live fast.log volgen
-make eve         # laatste 50 alerts uit eve.json
-make rules       # geladen/mislukte regels (laatste stats-event)
-make talkers     # top 10 bron-IP's
-make stats       # laatste stats-event (jq)
-make restart     # service herstarten
+make status      # service status + processes
+make test        # configuration test (suricata -T)
+make update      # update rules + restart
+make alerts      # tail fast.log live
+make eve         # last 50 alerts from eve.json
+make rules       # loaded/failed rules (latest stats event)
+make talkers     # top 10 source IPs
+make stats       # last stats event (jq)
+make restart     # restart the service
 make logs        # journalctl -f
 ```
 
-Alle scripts zijn ook los uitvoerbaar, bijvoorbeeld:
+The scripts can also be run directly, e.g.:
 
 ```bash
 ./scripts/eve-alerts.sh
 ```
 
-## Opties
+## Options
 
-| Variabele | Standaard | Gebruikt door |
-|-----------|-----------|---------------|
-| `EVE`     | `/var/log/suricata/eve.json` | eve-alerts, stats, top-talkers, rules-loaded |
-| `TAIL`    | `20000` regels               | eve-alerts, stats, top-talkers, rules-loaded |
+| Variable | Default                       | Used by                              |
+|----------|-------------------------------|--------------------------------------|
+| `EVE`    | `/var/log/suricata/eve.json`  | eve-alerts, stats, top-talkers, rules-loaded |
+| `TAIL`   | `20000` lines                 | eve-alerts, stats, top-talkers, rules-loaded |
+| `TOP`    | `10` (top-talkers)            | top-talkers                          |
 
-Grote `eve.json`-bestanden worden daarom niet volledig gelezen.
+Large `eve.json` files are therefore not read entirely.
 
-## Vereisten
+## Requirements
 
 - Suricata (Debian/Ubuntu: `sudo apt install suricata`)
 - `jq`
-- sudo-rechten voor service-/logcommands
+- sudo rights for service/log commands

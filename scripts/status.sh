@@ -6,4 +6,4 @@ sudo systemctl status suricata --no-pager || true
 
 echo
 echo "=== Resource Usage ==="
-ps aux | grep '[s]uricata' || echo "Geen suricata-processen gevonden"
+ps aux | grep '[s]uricata' || echo "No suricata processes found"

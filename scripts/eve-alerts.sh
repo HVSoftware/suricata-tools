@@ -5,14 +5,14 @@ EVE="${EVE:-/var/log/suricata/eve.json}"
 TAIL="${TAIL:-20000}"
 
 if [[ ! -r "$EVE" ]]; then
-  echo "Kan $EVE niet lezen (bestaat Suricata / EVE-log wel?)" >&2
+  echo "Cannot read $EVE (does Suricata / the Eve log exist?)" >&2
   exit 1
 fi
 
 alerts=$(tail -n "$TAIL" "$EVE" | grep '"event_type":"alert"' || true)
 
 if [[ -z "$alerts" ]]; then
-  echo "Geen alerts gevonden in de laatste $TAIL regels van $EVE"
+  echo "No alerts found in the last $TAIL lines of $EVE"
   exit 0
 fi
 

@@ -4,7 +4,7 @@ set -euo pipefail
 CONFIG="${CONFIG:-/etc/suricata/suricata.yaml}"
 
 if [[ ! -r "$CONFIG" ]]; then
-  echo "Kan $CONFIG niet lezen" >&2
+  echo "Cannot read $CONFIG" >&2
   exit 1
 fi
 

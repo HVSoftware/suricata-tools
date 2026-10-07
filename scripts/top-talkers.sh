@@ -6,7 +6,7 @@ TAIL="${TAIL:-20000}"
 TOP="${TOP:-10}"
 
 if [[ ! -r "$EVE" ]]; then
-  echo "Kan $EVE niet lezen (bestaat Suricata / EVE-log wel?)" >&2
+  echo "Cannot read $EVE (does Suricata / the Eve log exist?)" >&2
   exit 1
 fi
 
@@ -15,7 +15,7 @@ talkers=$(tail -n "$TAIL" "$EVE" \
   | sort | uniq -c | sort -nr | head -n "$TOP" || true)
 
 if [[ -z "$talkers" ]]; then
-  echo "Geen bron-IP's gevonden in de laatste $TAIL regels van $EVE"
+  echo "No source IPs found in the last $TAIL lines of $EVE"
   exit 0
 fi
 

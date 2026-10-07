@@ -2,7 +2,7 @@
 set -euo pipefail
 
 if ! command -v suricata-update >/dev/null 2>&1; then
-  echo "suricata-update niet gevonden. Installeer Suricata eerst." >&2
+  echo "suricata-update not found. Install Suricata first." >&2
   exit 1
 fi
 

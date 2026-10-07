@@ -1,37 +1,37 @@
 .PHONY: help status test update alerts eve rules talkers stats restart logs bootstrap
 
-help: ## Toon dit overzicht
+help: ## Show this overview
 	@grep -E '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-10s\033[0m %s\n", $$1, $$2}'
 
-status: ## Servicestatus + processen
+status: ## Service status + processes
 	./scripts/status.sh
 
-test: ## Configuratie-test
+test: ## Configuration test
 	./scripts/test-config.sh
 
-update: ## Regels updaten + herstart
+update: ## Update rules + restart
 	./scripts/update-rules.sh
 
-alerts: ## Live fast.log volgen
+alerts: ## Tail fast.log live
 	./scripts/alerts.sh
 
-eve: ## Laatste 50 alerts uit eve.json
+eve: ## Last 50 alerts from eve.json
 	./scripts/eve-alerts.sh
 
-rules: ## Geladen regels (laatste stats-event)
+rules: ## Loaded rules (latest stats event)
 	./scripts/rules-loaded.sh
 
-talkers: ## Top 10 bron-IP's
+talkers: ## Top 10 source IPs
 	./scripts/top-talkers.sh
 
-stats: ## Laatste stats-event
+stats: ## Last stats event
 	./scripts/stats.sh
 
-restart: ## Service herstarten
+restart: ## Restart the service
 	sudo systemctl restart suricata
 
-logs: ## Levensecht loggen
+logs: ## Stream service logs
 	sudo journalctl -u suricata -f
 
-bootstrap: ## Dependencies installeren
+bootstrap: ## Install dependencies
 	./scripts/bootstrap.sh
