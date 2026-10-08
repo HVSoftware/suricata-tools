@@ -17,6 +17,7 @@ cd suricata-tools
 
 ```bash
 make status      # service status + processes
+make doctor      # environment sanity checks (PASS/FAIL per check)
 make test        # configuration test (suricata -T)
 make check       # jq pipeline fixture checks (no Suricata needed)
 make update      # update rules + validate + restart
