@@ -58,6 +58,11 @@ make uninstall
 | `EVE`    | `/var/log/suricata/eve.json`  | eve-alerts, stats, top-talkers, top-alerts, rules-loaded |
 | `TAIL`   | `20000` lines                 | eve-alerts, stats, top-talkers, top-alerts, rules-loaded |
 | `TOP`    | `10`                          | top-talkers, top-alerts                               |
+| `SEV`    | unset                         | eve-alerts                                            |
+| `SIP`    | unset                         | eve-alerts (`src_ip` only)                             |
+| `SINCE`  | unset                         | eve-alerts (`s`, `m`, `h`, `d`, `w` units)             |
+
+`SEV` keeps only alerts with severity less than or equal to the value (an integer such as `2`; lower numbers are more severe in Suricata). `SIP` filters to alerts whose `src_ip` matches a single source IP, and `SINCE` keeps only alerts newer than the given age such as `1h`, `30m`, `2d`, or `30s`.
 
 Large `eve.json` files are therefore not read entirely.
 
