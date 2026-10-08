@@ -1,5 +1,7 @@
 .PHONY: help status test lint update alerts eve rules talkers stats restart logs bootstrap install uninstall
 
+BIN_DIR ?= /usr/local/bin
+
 help: ## Show this overview
 	@grep -E '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-10s\033[0m %s\n", $$1, $$2}'
 
@@ -39,7 +41,6 @@ logs: ## Stream service logs
 
 bootstrap: ## Install dependencies
 	./scripts/bootstrap.sh
-BIN_DIR ?= /usr/local/bin
 
 install: ## Symlink scripts into $(BIN_DIR)
 	sudo mkdir -p "$(BIN_DIR)"
