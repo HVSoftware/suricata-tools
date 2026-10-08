@@ -77,6 +77,8 @@ Large `eve.json` files are therefore not read entirely.
 
 This repository uses [Release Please](https://github.com/googleapis/release-please) on `main` to manage semantic versioning, tags (`vX.Y.Z`), `CHANGELOG.md`, and GitHub Releases.
 
+If your repository blocks pull requests from `GITHUB_TOKEN`, add a `RELEASE_PLEASE_TOKEN` secret (PAT with `contents` and `pull_requests` write access); the workflow uses it automatically.
+
 Use Conventional Commits for changes:
 
 - `feat:` → minor release

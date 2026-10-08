@@ -14,9 +14,11 @@ permissions:
 jobs:
   release-please:
     runs-on: ubuntu-latest
+    env:
+      RELEASE_PLEASE_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN }}
     steps:
       - uses: googleapis/release-please-action@v4
         with:
+          token: ${{ env.RELEASE_PLEASE_TOKEN != '' && env.RELEASE_PLEASE_TOKEN || github.token }}
           release-type: simple
           target-branch: main
-          include-v-in-tag: true
