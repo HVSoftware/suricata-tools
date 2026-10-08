@@ -1,4 +1,4 @@
-.PHONY: help status test update alerts eve rules talkers stats restart logs bootstrap
+.PHONY: help status test lint update alerts eve rules talkers stats restart logs bootstrap
 
 help: ## Show this overview
 	@grep -E '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-10s\033[0m %s\n", $$1, $$2}'
@@ -8,6 +8,10 @@ status: ## Service status + processes
 
 test: ## Configuration test
 	./scripts/test-config.sh
+
+lint: ## Bash syntax + shellcheck
+	bash -n scripts/*.sh
+	shellcheck -e SC2009 scripts/*.sh
 
 update: ## Update rules + restart
 	./scripts/update-rules.sh
