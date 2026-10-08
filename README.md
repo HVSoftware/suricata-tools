@@ -21,6 +21,8 @@ make eve         # last 50 alerts from eve.json
 make rules       # loaded/failed rules (latest stats event)
 make talkers     # top 10 source IPs
 make stats       # last stats event (jq)
+make install     # symlink commands into /usr/local/bin
+make uninstall   # remove symlinked commands
 make restart     # restart the service
 make logs        # journalctl -f
 ```
@@ -29,6 +31,20 @@ The scripts can also be run directly, e.g.:
 
 ```bash
 ./scripts/eve-alerts.sh
+```
+
+To run commands from anywhere, install symlinks into `/usr/local/bin`:
+
+```bash
+make install
+suricata-eve
+suricata-stats
+```
+
+Remove them again with:
+
+```bash
+make uninstall
 ```
 
 ## Options
