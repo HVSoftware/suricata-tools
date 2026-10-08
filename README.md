@@ -1,5 +1,8 @@
 # Suricata Tools
 
+[![CI](https://github.com/HVSoftware/suricata-tools/actions/workflows/lint.yml/badge.svg)](https://github.com/HVSoftware/suricata-tools/actions/workflows/lint.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Handy management and analysis scripts for Suricata IDS.
 
 ## Installation
