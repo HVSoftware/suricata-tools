@@ -1,4 +1,4 @@
-.PHONY: help status test lint update alerts eve rules talkers stats restart logs bootstrap install uninstall
+.PHONY: help status test lint update alerts eve rules talkers top-alerts stats restart logs bootstrap install uninstall
 
 BIN_DIR ?= /usr/local/bin
 
@@ -30,6 +30,9 @@ rules: ## Loaded rules (latest stats event)
 talkers: ## Top 10 source IPs
 	./scripts/top-talkers.sh
 
+top-alerts: ## Top 10 alert signatures
+	./scripts/top-alerts.sh
+
 stats: ## Last stats event
 	./scripts/stats.sh
 
@@ -51,6 +54,7 @@ install: ## Symlink scripts into $(BIN_DIR)
 	sudo ln -sf "$(CURDIR)/scripts/eve-alerts.sh" "$(BIN_DIR)/suricata-eve"
 	sudo ln -sf "$(CURDIR)/scripts/rules-loaded.sh" "$(BIN_DIR)/suricata-rules"
 	sudo ln -sf "$(CURDIR)/scripts/top-talkers.sh" "$(BIN_DIR)/suricata-talkers"
+	sudo ln -sf "$(CURDIR)/scripts/top-alerts.sh" "$(BIN_DIR)/suricata-top-alerts"
 	sudo ln -sf "$(CURDIR)/scripts/stats.sh" "$(BIN_DIR)/suricata-stats"
 
 uninstall: ## Remove symlinked scripts from $(BIN_DIR)
@@ -61,4 +65,5 @@ uninstall: ## Remove symlinked scripts from $(BIN_DIR)
 	sudo rm -f "$(BIN_DIR)/suricata-eve"
 	sudo rm -f "$(BIN_DIR)/suricata-rules"
 	sudo rm -f "$(BIN_DIR)/suricata-talkers"
+	sudo rm -f "$(BIN_DIR)/suricata-top-alerts"
 	sudo rm -f "$(BIN_DIR)/suricata-stats"

@@ -20,6 +20,7 @@ make alerts      # tail fast.log live
 make eve         # last 50 alerts from eve.json
 make rules       # loaded/failed rules (latest stats event)
 make talkers     # top 10 source IPs
+make top-alerts  # top 10 alert signatures from eve.json
 make stats       # last stats event (jq)
 make install     # symlink commands into /usr/local/bin
 make uninstall   # remove symlinked commands
@@ -49,11 +50,11 @@ make uninstall
 
 ## Options
 
-| Variable | Default                       | Used by                              |
-|----------|-------------------------------|--------------------------------------|
-| `EVE`    | `/var/log/suricata/eve.json`  | eve-alerts, stats, top-talkers, rules-loaded |
-| `TAIL`   | `20000` lines                 | eve-alerts, stats, top-talkers, rules-loaded |
-| `TOP`    | `10` (top-talkers)            | top-talkers                          |
+| Variable | Default                       | Used by                                               |
+|----------|-------------------------------|-------------------------------------------------------|
+| `EVE`    | `/var/log/suricata/eve.json`  | eve-alerts, stats, top-talkers, top-alerts, rules-loaded |
+| `TAIL`   | `20000` lines                 | eve-alerts, stats, top-talkers, top-alerts, rules-loaded |
+| `TOP`    | `10`                          | top-talkers, top-alerts                               |
 
 Large `eve.json` files are therefore not read entirely.
 
