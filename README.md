@@ -46,3 +46,17 @@ Large `eve.json` files are therefore not read entirely.
 - Suricata (Debian/Ubuntu: `sudo apt install suricata`)
 - `jq`
 - sudo rights for service/log commands
+
+## Releases
+
+This repository uses [Release Please](https://github.com/googleapis/release-please) on `main` to manage semantic versioning, tags (`vX.Y.Z`), `CHANGELOG.md`, and GitHub Releases.
+
+Use Conventional Commits for changes:
+
+- `feat:` → minor release
+- `fix:` → patch release
+- `feat!:` or `BREAKING CHANGE:` footer → major release
+
+Scopes are recommended (for example: `feat(scripts): ...`).
+
+When a PR closes an issue, include `Fixes: #N` in the PR description.
