@@ -1,4 +1,4 @@
-.PHONY: help status test lint update alerts eve rules talkers attackers top-alerts stats restart logs bootstrap install uninstall
+.PHONY: help status test lint update alerts eve rules talkers attackers top-alerts dns tls stats restart logs bootstrap install uninstall
 
 BIN_DIR ?= /usr/local/bin
 
@@ -36,6 +36,12 @@ attackers: ## Top 10 alert source IPs
 top-alerts: ## Top 10 alert signatures
 	./scripts/top-alerts.sh
 
+dns: ## Top 10 queried domains
+	./scripts/top-dns.sh
+
+tls: ## Top 10 TLS SNI values
+	./scripts/top-tls.sh
+
 stats: ## Last stats event
 	./scripts/stats.sh
 
@@ -59,6 +65,8 @@ install: ## Symlink scripts into $(BIN_DIR)
 	sudo ln -sf "$(CURDIR)/scripts/top-talkers.sh" "$(BIN_DIR)/suricata-talkers"
 	sudo ln -sf "$(CURDIR)/scripts/top-attackers.sh" "$(BIN_DIR)/suricata-attackers"
 	sudo ln -sf "$(CURDIR)/scripts/top-alerts.sh" "$(BIN_DIR)/suricata-top-alerts"
+	sudo ln -sf "$(CURDIR)/scripts/top-dns.sh" "$(BIN_DIR)/suricata-dns"
+	sudo ln -sf "$(CURDIR)/scripts/top-tls.sh" "$(BIN_DIR)/suricata-tls"
 	sudo ln -sf "$(CURDIR)/scripts/stats.sh" "$(BIN_DIR)/suricata-stats"
 
 uninstall: ## Remove symlinked scripts from $(BIN_DIR)
@@ -71,4 +79,6 @@ uninstall: ## Remove symlinked scripts from $(BIN_DIR)
 	sudo rm -f "$(BIN_DIR)/suricata-talkers"
 	sudo rm -f "$(BIN_DIR)/suricata-attackers"
 	sudo rm -f "$(BIN_DIR)/suricata-top-alerts"
+	sudo rm -f "$(BIN_DIR)/suricata-dns"
+	sudo rm -f "$(BIN_DIR)/suricata-tls"
 	sudo rm -f "$(BIN_DIR)/suricata-stats"

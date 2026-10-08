@@ -25,6 +25,8 @@ make rules       # loaded/failed rules (latest stats event)
 make talkers     # top 10 source IPs
 make attackers   # top 10 alert source IPs
 make top-alerts  # top 10 alert signatures from eve.json
+make dns         # top 10 queried domains
+make tls         # top 10 TLS SNI values
 make stats       # last stats event (jq)
 make install     # symlink commands into /usr/local/bin
 make uninstall   # remove symlinked commands
@@ -56,9 +58,9 @@ make uninstall
 
 | Variable | Default                       | Used by                                               |
 |----------|-------------------------------|-------------------------------------------------------|
-| `EVE`    | `/var/log/suricata/eve.json`  | eve-alerts, stats, top-talkers, top-attackers, top-alerts, rules-loaded |
-| `TAIL`   | `20000` lines                 | eve-alerts, stats, top-talkers, top-attackers, top-alerts, rules-loaded |
-| `TOP`    | `10`                          | top-talkers, top-attackers, top-alerts                |
+| `EVE`    | `/var/log/suricata/eve.json`  | eve-alerts, stats, top-talkers, top-attackers, top-alerts, dns, tls, rules-loaded |
+| `TAIL`   | `20000` lines                 | eve-alerts, stats, top-talkers, top-attackers, top-alerts, dns, tls, rules-loaded |
+| `TOP`    | `10`                          | top-talkers, top-attackers, top-alerts, dns, tls    |
 | `SEV`    | unset                         | eve-alerts                                            |
 | `SIP`    | unset                         | eve-alerts (`src_ip` only)                             |
 | `SINCE`  | unset                         | eve-alerts (`s`, `m`, `h`, `d`, `w` units)             |
