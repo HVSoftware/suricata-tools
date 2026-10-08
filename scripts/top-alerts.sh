@@ -17,7 +17,7 @@ fi
 
 alerts=$(tail -n "$TAIL" "$EVE" \
   | jq -r 'select(.event_type=="alert" and .alert and .alert.signature) | .alert.signature' \
-  | sort | uniq -c | sort -nr | head -n "$TOP" || true)
+  | sort | uniq -c | sort -nr | head -n "$TOP")
 
 if [[ -z "$alerts" ]]; then
   echo "No alert signatures found in the last $TAIL lines of $EVE"
