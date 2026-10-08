@@ -13,7 +13,7 @@ lint: ## Bash syntax + shellcheck
 	bash -n scripts/*.sh
 	shellcheck -e SC2009 scripts/*.sh
 
-update: ## Update rules + restart
+update: ## Update rules + validate + restart
 	./scripts/update-rules.sh
 
 alerts: ## Tail fast.log live
