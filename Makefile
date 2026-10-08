@@ -1,4 +1,4 @@
-.PHONY: help status test lint update alerts eve rules talkers attackers top-alerts dns tls stats restart logs bootstrap install uninstall
+.PHONY: help status test check lint update alerts eve rules talkers attackers top-alerts dns tls stats restart logs bootstrap install uninstall
 
 BIN_DIR ?= /usr/local/bin
 
@@ -11,9 +11,12 @@ status: ## Service status + processes
 test: ## Configuration test
 	./scripts/test-config.sh
 
+check: ## Local jq fixture checks for EVE pipelines
+	./tests/check-jq.sh
+
 lint: ## Bash syntax + shellcheck
-	bash -n scripts/*.sh
-	shellcheck -e SC2009 scripts/*.sh
+	bash -n scripts/*.sh tests/*.sh
+	shellcheck -e SC2009 scripts/*.sh tests/*.sh
 
 update: ## Update rules + validate + restart
 	./scripts/update-rules.sh

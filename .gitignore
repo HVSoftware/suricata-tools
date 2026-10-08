@@ -1,2 +1,3 @@
 # Local copies of Suricata eve logs used during testing
 **/eve.json
+!/testdata/eve.json
