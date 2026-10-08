@@ -10,6 +10,11 @@ if [[ ! -r "$EVE" ]]; then
   exit 1
 fi
 
+if ! command -v jq >/dev/null 2>&1; then
+  echo "jq is required but not installed. Install it (e.g. sudo apt install jq)." >&2
+  exit 1
+fi
+
 talkers=$(tail -n "$TAIL" "$EVE" \
   | jq -r 'select(.src_ip) | .src_ip' \
   | sort | uniq -c | sort -nr | head -n "$TOP" || true)

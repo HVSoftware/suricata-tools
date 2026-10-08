@@ -9,6 +9,11 @@ if [[ ! -r "$EVE" ]]; then
   exit 1
 fi
 
+if ! command -v jq >/dev/null 2>&1; then
+  echo "jq is required but not installed. Install it (e.g. sudo apt install jq)." >&2
+  exit 1
+fi
+
 stats=$(tail -n "$TAIL" "$EVE" | grep '"event_type":"stats"' | tail -1 || true)
 
 if [[ -z "$stats" ]]; then
